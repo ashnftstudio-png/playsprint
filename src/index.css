@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom orbits animation for planet creator satellite */
+@keyframes spin {
+  from {
+    transform: rotate(0deg) translateX(100%) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100%) rotate(-360deg);
+  }
+}
+
+/* Grid overlay for custom laser or orbit chambers */
+.bg-grid-glow {
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Arcade Shake for heavy screen vibration */
+@keyframes arcade-heavy-shake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-3px, -2px) rotate(-1deg); }
+  20% { transform: translate(-1px, 2px) rotate(1deg); }
+  30% { transform: translate(3px, 1px) rotate(0deg); }
+  40% { transform: translate(-2px, -1px) rotate(1deg); }
+  50% { transform: translate(2px, 3px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(1px, -2px) rotate(-1deg); }
+  80% { transform: translate(-1px, 3px) rotate(1deg); }
+  90% { transform: translate(2px, -1px) rotate(0deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.animate-arcade-heavy-shake {
+  animation: arcade-heavy-shake 0.15s infinite;
+}
+
+/* Tiny Shake for incorrect guesses */
+@keyframes arcade-tiny-shake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-arcade-tiny-shake {
+  animation: arcade-tiny-shake 0.15s ease-in-out;
+}
+
+/* Slow screen tremor modifier */
+@keyframes slow-tremor {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-slow-tremor {
+  animation: slow-tremor 0.8s infinite ease-in-out;
+}
+
+/* Rapid vibration for the shake chaos modifier */
+@keyframes rapid-shape-shake {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, -1px); }
+  20% { transform: translate(1px, 1px); }
+  30% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  55% { transform: translate(-1.5px, -0.5px); }
+  70% { transform: translate(0.5px, 1.5px); }
+  85% { transform: translate(-1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-rapid-shape-shake {
+  animation: rapid-shape-shake 0.1s infinite;
+}
+
+/* Ambient Background Flashing chaos modifier */
+@keyframes ambient-flash {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.35; }
+}
+
+.animate-ambient-flash {
+  animation: ambient-flash 0.4s infinite ease-in-out;
+}
+
+/* Button pulsing chaos modifier */
+@keyframes button-pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-button-pulse-scale {
+  animation: button-pulse-scale 1s infinite ease-in-out;
+}
+
+/* Ultra heavy neon glow pulsing */
+@keyframes heavy-glow-pulse {
+  0%, 100% { box-shadow: 0 0 15px var(--glow-color, rgba(255,255,255,0.1)); }
+  50% { box-shadow: 0 0 35px var(--glow-color, rgba(255,255,255,0.3)); }
+}
+
+.animate-heavy-glow-pulse {
+  animation: heavy-glow-pulse 0.8s infinite ease-in-out;
+}
+

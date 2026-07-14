@@ -1,0 +1,6 @@
+{
+  "name": "PlaySprint",
+  "description": "PlaySprint: Play. Explore. Discover. A premium interactive experiences platform featuring beautiful, visual, educational, and experimental games.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
