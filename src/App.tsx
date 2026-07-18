@@ -4,6 +4,8 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { CategoryFilters } from './components/CategoryFilters';
@@ -173,6 +175,11 @@ export default function App() {
   }, []);
 
   return (
+<Routes>
+  <Route path="/home" element={<HomePage />} />
+  <Route
+    path="*"
+    element={
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
       <div>
         {/* Navigation bar */}
@@ -216,6 +223,8 @@ export default function App() {
         onSelectExperience={setSelectedExperience}
       />
     </div>
-  );
+      }
+    />
+  </Routes>
+);
 }
-
