@@ -195,6 +195,29 @@ useEffect(() => {
   }
 
   meta.content = description;
+const updateMeta = (
+  selector: string,
+  value: string,
+  attr: "property" | "name"
+) => {
+  let tag = document.querySelector(selector) as HTMLMetaElement | null;
+
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute(attr, selector.match(/"(.*)"/)?.[1] || "");
+    document.head.appendChild(tag);
+  }
+
+  tag.content = value;
+};
+
+const socialTitle = title;
+const socialDescription = description;
+
+updateMeta('meta[property="og:title"]', socialTitle, "property");
+updateMeta('meta[property="og:description"]', socialDescription, "property");
+updateMeta('meta[name="twitter:title"]', socialTitle, "name");
+updateMeta('meta[name="twitter:description"]', socialDescription, "name");
 let schema = document.querySelector(
   'script[type="application/ld+json"][data-game-schema]'
 ) as HTMLScriptElement | null;
