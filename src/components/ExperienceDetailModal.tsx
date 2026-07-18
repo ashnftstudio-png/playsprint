@@ -62,12 +62,12 @@ export const ExperienceDetailModal: React.FC<ExperienceDetailModalProps> = ({
           <div className="flex items-center gap-2 sm:gap-3">
             <span className="text-lg sm:text-2xl">🎮</span>
             <div>
-              <h1 className="text-xs sm:text-sm font-bold tracking-tight uppercase text-slate-100 flex items-center gap-1.5">
+              <h2 className="text-xs sm:text-sm font-bold tracking-tight uppercase text-slate-100 flex items-center gap-1.5">
                 {experience.title}
                 <span className="text-[9px] bg-slate-900 border border-slate-800 text-indigo-400 font-mono font-bold px-1.5 py-0.5 rounded-full uppercase">
                   {experience.category}
                 </span>
-              </h1>
+              </h2>
               <p className="text-[9px] text-slate-500 font-mono uppercase tracking-widest hidden sm:block">
                 PlaySprint Signature Arcade Cabinet v1.1
               </p>
