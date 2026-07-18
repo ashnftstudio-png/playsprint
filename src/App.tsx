@@ -173,7 +173,43 @@ export default function App() {
       }
     }
   }, []);
+useEffect(() => {
+  const title = selectedExperience
+    ? `${selectedExperience.title} | PlaySprint`
+    : "PlaySprint - Interactive Browser Games";
 
+  document.title = title;
+
+  const description =
+    selectedExperience?.description ||
+    "Play free interactive browser games on PlaySprint.";
+
+  let meta = document.querySelector(
+    'meta[name="description"]'
+  ) as HTMLMetaElement | null;
+
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.name = "description";
+    document.head.appendChild(meta);
+  }
+
+  meta.content = description;
+
+  let canonical = document.querySelector(
+    'link[rel="canonical"]'
+  ) as HTMLLinkElement | null;
+
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    document.head.appendChild(canonical);
+  }
+
+  canonical.href = selectedExperience
+    ? `${window.location.origin}/${selectedExperience.id}`
+    : window.location.origin;
+}, [selectedExperience]);
   return (
 <Routes>
   <Route path="/home" element={<HomePage />} />
