@@ -195,7 +195,37 @@ useEffect(() => {
   }
 
   meta.content = description;
+let schema = document.querySelector(
+  'script[type="application/ld+json"][data-game-schema]'
+) as HTMLScriptElement | null;
 
+if (!schema) {
+  schema = document.createElement("script");
+  schema.type = "application/ld+json";
+  schema.setAttribute("data-game-schema", "true");
+  document.head.appendChild(schema);
+}
+
+schema.text = JSON.stringify(
+  selectedExperience
+    ? {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        name: selectedExperience.title,
+        description: selectedExperience.description,
+        url: `${window.location.origin}/${selectedExperience.id}`,
+        genre: selectedExperience.category,
+        gamePlatform: "Web Browser",
+        applicationCategory: "Game",
+        operatingSystem: "Any",
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "PlaySprint",
+        url: window.location.origin,
+      }
+);
   let canonical = document.querySelector(
     'link[rel="canonical"]'
   ) as HTMLLinkElement | null;
