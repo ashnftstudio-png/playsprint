@@ -10,6 +10,7 @@ import { Experience } from '../types';
 import { getColorClasses } from './ExperienceCard';
 import { InteractiveMiniToys } from './InteractiveMiniToys';
 import { useGamePlatform, gamePlatform } from '../lib/gamePlatform';
+import { SEO_CONTENT } from '../data/seoContent';
 
 interface ExperienceDetailModalProps {
   experience: Experience | null;
@@ -46,6 +47,7 @@ export const ExperienceDetailModal: React.FC<ExperienceDetailModalProps> = ({
   }, [experience]);
 
   if (!experience) return null;
+const seo = SEO_CONTENT[experience.id];
 
   const classes = getColorClasses(experience.themeColor);
 

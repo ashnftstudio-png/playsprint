@@ -81,6 +81,37 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
+<div className="flex flex-col gap-3">
+  <span className="text-[10px] uppercase font-mono tracking-widest text-indigo-400 font-bold">
+    Company
+  </span>
+
+  <ul className="flex flex-col gap-2 text-xs text-slate-400 font-medium">
+    <li>
+      <a href="/about" className="hover:text-white transition-colors">
+        About Us
+      </a>
+    </li>
+
+    <li>
+      <a href="/contact" className="hover:text-white transition-colors">
+        Contact
+      </a>
+    </li>
+
+    <li>
+      <a href="/privacy" className="hover:text-white transition-colors">
+        Privacy Policy
+      </a>
+    </li>
+
+    <li>
+      <a href="/terms" className="hover:text-white transition-colors">
+        Terms & Conditions
+      </a>
+    </li>
+  </ul>
+</div>
           {/* Connect Column */}
           <div className="md:col-span-3 flex flex-col gap-4">
             <span className="text-[10px] uppercase font-mono tracking-widest text-indigo-400 font-bold">

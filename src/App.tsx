@@ -6,6 +6,10 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { CategoryFilters } from './components/CategoryFilters';
@@ -266,6 +270,10 @@ schema.text = JSON.stringify(
   return (
 <Routes>
   <Route path="/home" element={<HomePage />} />
+<Route path="/about" element={<About />} />
+<Route path="/contact" element={<Contact />} />
+<Route path="/privacy" element={<Privacy />} />
+<Route path="/terms" element={<Terms />} />
   <Route
     path="*"
     element={
