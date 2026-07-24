@@ -12,6 +12,7 @@ const [highScore, setHighScore] = useState(() => {
 });
   const [message, setMessage] = useState("Tap anywhere to stop the block");
 const [currentObject, setCurrentObject] = useState(getRandomObject());
+const difficulty = getDifficulty(score);
 
   useEffect(() => {
     if (!running) return;
@@ -43,7 +44,6 @@ const [currentObject, setCurrentObject] = useState(getRandomObject());
     setRunning(false);
 
     const distance = Math.abs(position - 45);
-const difficulty = getDifficulty(score);
 const multiplier = getComboBonus(score);
 
     if (distance <= 5) {
@@ -96,7 +96,9 @@ const multiplier = getComboBonus(score);
  className="absolute top-1/2 -translate-y-1/2 transition-all text-6xl"
   style={{ left: `${position}%` }}
 >
-  {currentObject}
+  <span style={{ color: currentObject.color }}>
+  {currentObject.emoji}
+</span>
 </div>
       </div>
 
