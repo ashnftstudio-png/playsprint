@@ -35,6 +35,7 @@ import { FindTheFakeEmojiToy } from './FindTheFakeEmojiToy';
 import { ChainReactionToy } from './ChainReactionToy';
 import { ShapeSwitchToy } from './ShapeSwitchToy';
 import { PerfectTimingToy } from './PerfectTimingToy';
+import PerfectCutGame from './PerfectCutGame';
 import { GravityEscapeToy } from './GravityEscapeToy';
 import { LaserMazeToy } from './LaserMazeToy';
 
@@ -6863,6 +6864,8 @@ export const InteractiveMiniToys: React.FC<MiniToyProps> = ({ experienceId, onCl
         return <ShapeSwitchToy />;
       case 'perfect-timing':
         return <PerfectTimingToy />;
+      case 'perfect-cut':
+        return <PerfectCutGame />;
       case 'gravity-escape':
         return <GravityEscapeToy />;
       case 'laser-maze':

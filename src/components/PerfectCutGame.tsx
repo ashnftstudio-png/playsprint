@@ -7,6 +7,9 @@ export default function PerfectCutGame() {
   const [direction, setDirection] = useState(1);
   const [running, setRunning] = useState(true);
   const [score, setScore] = useState(0);
+const [highScore, setHighScore] = useState(() => {
+  return Number(localStorage.getItem("perfect-cut-high-score") || 0);
+});
   const [message, setMessage] = useState("Tap anywhere to stop the block");
 const [currentObject, setCurrentObject] = useState(getRandomObject());
 
@@ -44,7 +47,16 @@ const difficulty = getDifficulty(score);
 const multiplier = getComboBonus(score);
 
     if (distance <= 5) {
-      setScore((s) => s + multiplier);
+      setScore((s) => {
+  const newScore = s + multiplier;
+
+  if (newScore > highScore) {
+    setHighScore(newScore);
+    localStorage.setItem("perfect-cut-high-score", String(newScore));
+  }
+
+  return newScore;
+});
       setMessage("🔥 PERFECT!");
     } else if (distance <= 15) {
       setMessage("✅ Good");
@@ -73,6 +85,9 @@ const multiplier = getComboBonus(score);
 
       <div className="text-xl font-bold mb-3">
         Score: {score}
+<div className="text-slate-400 text-sm mb-4">
+  High Score: {highScore}
+</div>
       </div>
 
       <div className="relative h-28 md:h-36 bg-gradient-to-r from-slate-800 to-slate-700 rounded-3xl overflow-hidden mb-6 border border-slate-600">
