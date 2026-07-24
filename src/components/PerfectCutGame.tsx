@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { getRandomObject } from "../games/perfectCutObjects";
+import { getDifficulty } from "../games/perfectCutEngine";
+import { getHitMessage, getComboBonus } from "../games/perfectCutEffects";
 export default function PerfectCutGame() {
   const [position, setPosition] = useState(0);
   const [direction, setDirection] = useState(1);
   const [running, setRunning] = useState(true);
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState("Tap anywhere to stop the block");
+const [currentObject, setCurrentObject] = useState(getRandomObject());
 
   useEffect(() => {
     if (!running) return;
 
     const timer = setInterval(() => {
       setPosition((prev) => {
-        let next = prev + direction * 2;
+        let next = prev + direction * difficulty.speed;
 
         if (next >= 90) {
           setDirection(-1);
@@ -25,7 +29,7 @@ export default function PerfectCutGame() {
 
         return next;
       });
-    }, 16);
+    }, 12);
 
     return () => clearInterval(timer);
   }, [running, direction]);
@@ -36,9 +40,11 @@ export default function PerfectCutGame() {
     setRunning(false);
 
     const distance = Math.abs(position - 45);
+const difficulty = getDifficulty(score);
+const multiplier = getComboBonus(score);
 
     if (distance <= 5) {
-      setScore((s) => s + 1);
+      setScore((s) => s + multiplier);
       setMessage("🔥 PERFECT!");
     } else if (distance <= 15) {
       setMessage("✅ Good");
@@ -57,7 +63,7 @@ export default function PerfectCutGame() {
   return (
     <div
       onClick={handleTap}
-      className="max-w-md mx-auto bg-slate-900 border border-slate-700 rounded-2xl p-6 text-center cursor-pointer select-none"
+     className="w-full min-h-[80vh] max-w-5xl mx-auto bg-slate-900 border border-slate-700 rounded-3xl p-6 md:p-10 text-center cursor-pointer select-none flex flex-col justify-center"
     >
       <h2 className="text-3xl font-bold mb-2">Perfect Cut</h2>
 
@@ -69,13 +75,14 @@ export default function PerfectCutGame() {
         Score: {score}
       </div>
 
-      <div className="relative h-10 bg-slate-800 rounded-full overflow-hidden mb-4">
+      <div className="relative h-28 md:h-36 bg-gradient-to-r from-slate-800 to-slate-700 rounded-3xl overflow-hidden mb-6 border border-slate-600">
         <div className="absolute left-1/2 top-0 h-full w-1 bg-red-500 -translate-x-1/2"></div>
-
-        <div
-          className="absolute top-1 h-8 w-8 bg-indigo-500 rounded transition-all"
-          style={{ left: `${position}%` }}
-        ></div>
+<div
+ className="absolute top-1/2 -translate-y-1/2 transition-all text-6xl"
+  style={{ left: `${position}%` }}
+>
+  {currentObject}
+</div>
       </div>
 
       <div className="text-lg font-semibold mb-4">
